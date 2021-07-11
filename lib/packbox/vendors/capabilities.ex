@@ -19,12 +19,16 @@ defmodule Packbox.Vendors.Capabilities do
 
   @spec can_produce_item_type?(String.t(), Types.box_type()) :: boolean
   defp can_produce_item_type?("happy_box", type), do: type in [:mailer_box, :shipper_box]
+  defp can_produce_item_type?("packy_pack", type), do: type in [:mailer_box, :shipper_box]
   defp can_produce_item_type?("rigid_cartons", type), do: type in [:mailer_box, :product_box]
   defp can_produce_item_type?(_, _), do: false
 
   @spec can_produce_material?(String.t(), Types.material()) :: boolean
   defp can_produce_material?("happy_box", material),
     do: material in [:kraft_corrugated, :white_corrugated]
+
+  defp can_produce_material?("packy_pack", material),
+    do: material in [:kraft_corrugated]
 
   defp can_produce_material?("rigid_cartons", material),
     do: material in [:white_corrugated, :paperboard]
@@ -33,6 +37,7 @@ defmodule Packbox.Vendors.Capabilities do
 
   @spec can_produce_quantity?(String.t(), pos_integer) :: boolean
   defp can_produce_quantity?("happy_box", quantity), do: quantity >= 25
+  defp can_produce_quantity?("packy_pack", quantity), do: quantity in 1..100
   defp can_produce_quantity?("rigid_cartons", quantity), do: quantity >= 10
   defp can_produce_quantity?(_, _), do: true
 end
