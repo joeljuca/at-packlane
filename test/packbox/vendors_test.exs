@@ -27,9 +27,16 @@ defmodule Packbox.VendorsTest do
       assert [^vendor] = Vendors.list_vendors()
     end
 
+    test "get_vendor/1 returns the vendor with given ID" do
+      %{id: fixture_id} = vendor_fixture()
+      vendor = Vendors.get_vendor(fixture_id)
+
+      assert %Vendor{id: ^fixture_id} = vendor
+    end
+
     test "get_vendor!/1 returns the vendor with given code" do
       vendor = vendor_fixture()
-      assert Vendors.get_vendor!(vendor.code) == vendor
+      assert Vendors.get_vendor_by_code!(vendor.code) == vendor
     end
   end
 end
