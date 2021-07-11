@@ -17,5 +17,7 @@ defmodule PackboxWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    resources "/orders", OrderController, only: [:index]
   end
 end

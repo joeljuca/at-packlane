@@ -3,6 +3,8 @@ defmodule Packbox.Orders.Order do
   import Ecto.Changeset
 
   schema "orders" do
+    # Question: why is there an `order_number` serial field - when `id` is a
+    # bigserial, capable of covering very big serialized number scenarios?
     field :order_number, :integer, read_after_write: true
     embeds_one :customer_address, Packbox.Address, on_replace: :update
     field :vendor_code, :string

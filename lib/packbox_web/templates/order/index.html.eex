@@ -1,0 +1,27 @@
+<h1>Orders</h1>
+<table border="1" width="100%">
+  <thead>
+    <th>Order number</th>
+    <th>Items</th>
+    <th>Vendor</th>
+    <th>State</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <%= for product <- @products do %>
+      <tr>
+        <td>#<%= product.order_number  %></td>
+        <td>
+          <ul>
+            <%= for item <- product.items do %>
+              <li><%= item.name %><br />(<%= item.quantity %> units)</li>
+            <% end %>
+          </ul>
+        </td>
+        <td><%= product.vendor_code %></td>
+        <td><%= product.state %></td>
+        <td><button>Submit for production</button></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
