@@ -42,7 +42,9 @@ defmodule Packbox.MixProject do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:mix_test_watch, "~> 1.0", only: [:test]}
+      {:mix_test_watch, "~> 1.0", only: [:test]},
+      {:ex_machina, "~> 2.7", only: [:dev, :test]},
+      {:faker, "~> 0.16.0", only: [:dev, :test]}
     ]
   end
 
