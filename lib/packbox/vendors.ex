@@ -3,6 +3,8 @@ defmodule Packbox.Vendors do
   The Vendors context.
   """
 
+  import Ecto.Query
+  import Packbox.Vendors.Capabilities
   alias Packbox.Repo
   alias Packbox.Orders.Order
   alias Packbox.Vendors.Vendor
@@ -39,10 +41,31 @@ defmodule Packbox.Vendors do
 
   def change_vendor(%Vendor{} = vendor), do: vendor |> Vendor.changeset(%{})
 
-  def all_capable_of_producing_order(%Order{} = _order) do
-    # TODO: this needs to be implemented.
-    #
-    # See README.md for details.
+  def all_capable_of_producing_order(%Order{} = order) do
+    # I'm splitting the load of vendor codes and full vendor data because, given
+    # a scenario where we have lots of vendors, we'll be creating a bottleneck
+    # by loading too many data to then discart later.
+
+    query =
+      from vendor in Vendor,
+        select: [vendor.code]
+
+    all_vendor_codes = query |> Repo.all()
+
+    capable_vendor_codes =
+      all_vendor_codes
+      |> Enum.filter(fn vendor_code ->
+        order.items
+        |> Enum.reduce(true, fn item, is_capable ->
+          is_capable and vendor_capable_of_producing_item?(vendor_code, item.type)
+        end)
+      end)
+
+    capable_vendors =
+      from vendor in Vendor,
+        where: vendor.code in ^capable_vendor_codes
+
+    capable_vendors
   end
 
   def choose_cheapest_vendor_for_order(%Order{} = _order) do
