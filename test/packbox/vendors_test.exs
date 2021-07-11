@@ -7,6 +7,8 @@ defmodule Packbox.VendorsTest do
     alias Packbox.Vendors.Vendor
 
     def vendor_fixture() do
+      Repo.delete_all(Vendor)
+
       Packbox.Repo.insert!(%Vendor{
         code: "some code",
         name: "some name",
@@ -16,7 +18,7 @@ defmodule Packbox.VendorsTest do
 
     test "list_vendors/0 returns all vendors" do
       vendor = vendor_fixture()
-      assert Vendors.list_vendors() == [vendor]
+      assert [^vendor] = Vendors.list_vendors()
     end
 
     test "get_vendor!/1 returns the vendor with given code" do
