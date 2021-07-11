@@ -12,7 +12,7 @@ defmodule Packbox.Repo.Migrations.InsertVendorPackyPack do
         city: "Chicago",
         region: "IL",
         postal_code: "60612",
-        country: "United States"
+        country: :USA
       }
     })
   end

@@ -27,7 +27,7 @@ Repo.insert!(%Vendor{
     city: "North Bergen",
     region: "NJ",
     postal_code: "07047",
-    country: "US"
+    country: "USA"
   }
 })
 
@@ -39,7 +39,7 @@ Repo.insert!(%Vendor{
     city: "Fishers",
     region: "IN",
     postal_code: "46037",
-    country: "US"
+    country: "USA"
   }
 })
 
@@ -63,7 +63,7 @@ Repo.insert!(%Order{
     city: "Sedona",
     region: "AZ",
     postal_code: "86336",
-    country: "US"
+    country: "USA"
   }
 })
 
@@ -85,7 +85,7 @@ Repo.insert!(%Order{
     city: "Matrinez",
     region: "CA",
     postal_code: "94553",
-    country: "US"
+    country: "USA"
   }
 })
 
@@ -117,7 +117,7 @@ Repo.insert!(%Order{
     city: "Plano",
     region: "TX",
     postal_code: "75025",
-    country: "US"
+    country: "USA"
   }
 })
 
@@ -139,6 +139,6 @@ Repo.insert!(%Order{
     city: "Columbus",
     region: "OH",
     postal_code: "43229",
-    country: "US"
+    country: "USA"
   }
 })

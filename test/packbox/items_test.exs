@@ -8,8 +8,7 @@ defmodule Packbox.ItemsTest do
     "city" => "New York",
     "region" => "NY",
     "postal_code" => "10001",
-    "country" => "US",
-    "country_name" => "United States"
+    "country" => "USA"
   }
 
   @order_params %{

@@ -12,7 +12,13 @@ defmodule Packbox.VendorsTest do
       Packbox.Repo.insert!(%Vendor{
         code: "some code",
         name: "some name",
-        address: %{}
+        address: %{
+          street_address: "866 6th Ave",
+          city: "New York",
+          region: "NY",
+          postal_code: "10001",
+          country: :USA
+        }
       })
     end
 

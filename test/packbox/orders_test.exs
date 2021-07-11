@@ -8,7 +8,7 @@ defmodule Packbox.OrdersTest do
     "city" => "New York",
     "region" => "NY",
     "postal_code" => "10001",
-    "country" => "US"
+    "country" => "USA"
   }
 
   def vendor_fixture(code) do
