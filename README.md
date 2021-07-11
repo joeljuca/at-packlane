@@ -1,4 +1,4 @@
-# Packbox
+# Packbox [![ci](https://github.com/joeljuca/at-packlane/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/joeljuca/at-packlane/actions/workflows/ci.yml)
 
 ## One-time setup
 
