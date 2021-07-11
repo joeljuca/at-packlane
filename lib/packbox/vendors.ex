@@ -6,13 +6,13 @@ defmodule Packbox.Vendors do
   alias Packbox.Orders.Order
   alias Packbox.Vendors.Vendor
 
-  def all_capable_of_producing_order(%Order{} = order) do
+  def all_capable_of_producing_order(%Order{} = _order) do
     # TODO: this needs to be implemented.
     #
     # See README.md for details.
   end
 
-  def choose_cheapest_vendor_for_order(%Order{} = order) do
+  def choose_cheapest_vendor_for_order(%Order{} = _order) do
     # TODO: this needs to be implemented.
     #
     # See README.md for details.

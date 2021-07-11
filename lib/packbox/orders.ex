@@ -3,20 +3,20 @@ defmodule Packbox.Orders do
   The Orders context.
   """
   alias Packbox.Repo
-  alias Packbox.Items.Item
+  # alias Packbox.Items.Item
   alias Packbox.Orders.Order
 
-  def fetch_shipping_rates_for_order(%Order{} = order, %Packbox.Address{} = origin_address) do
+  def fetch_shipping_rates_for_order(%Order{} = _order, %Packbox.Address{} = _origin_address) do
     # TODO: this needs to be implemented.
     #
     # See README.md for details.
   end
 
-  @spec calculate_parcels([%Item{}]) :: [
-          %{length: float, width: float, height: float, weight: float}
-        ]
-  defp calculate_parcels(items) do
-  end
+  # @spec calculate_parcels([%Item{}]) :: [
+  #         %{length: float, width: float, height: float, weight: float}
+  #       ]
+  # defp calculate_parcels(_items) do
+  # end
 
   @doc """
   Return the list of orders.
