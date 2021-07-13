@@ -2,7 +2,7 @@ name: ci
 
 on:
   push:
-    branches: [main]
+    branches: [main, ci-inotify-tools]
   pull_request:
     branches: [main]
 
@@ -15,7 +15,7 @@ jobs:
 
       - uses: erlef/setup-beam@v1
         with:
-          otp-version: "24"
+          otp-version: "23"
           elixir-version: "1.12.2"
 
       - uses: actions/cache@v2
@@ -42,7 +42,7 @@ jobs:
 
       - uses: erlef/setup-beam@v1
         with:
-          otp-version: "24"
+          otp-version: "23"
           elixir-version: "1.12.2"
 
       - uses: actions/cache@v2
@@ -51,4 +51,6 @@ jobs:
           key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
 
       - run: mix deps.get
+
+      - run: sudo apt-get install -y inotify-tools # https://hexdocs.pm/phoenix/installation.html#inotify-tools-for-linux-users
       - run: mix test
