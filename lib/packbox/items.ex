@@ -4,18 +4,19 @@ defmodule Packbox.Items do
   """
   alias Packbox.Repo
   alias Packbox.Items.Item
+  alias Packbox.Orders.Order
 
   @doc """
   Get a single item.
 
   Raises `Ecto.NoResultsError` if the item does not exist.
   """
-  def get_item!(id), do: Repo.get!(Item, id)
+  def get_item!(id) when is_integer(id), do: Repo.get!(Item, id)
 
   @doc """
   Create a item.
   """
-  def create_item(order, params \\ %{}) do
+  def create_item(%Order{} = order, %{} = params) do
     Ecto.build_assoc(order, :items)
     |> Item.changeset(params)
     |> Repo.insert()
@@ -24,7 +25,7 @@ defmodule Packbox.Items do
   @doc """
   Update a item.
   """
-  def update_item(%Item{} = item, params) do
+  def update_item(%Item{} = item, %{} = params) do
     item
     |> Item.changeset(params)
     |> Repo.update()
@@ -33,7 +34,7 @@ defmodule Packbox.Items do
   @doc """
   Return an `%Ecto.Changeset{}` for tracking item changes.
   """
-  def change_item(%Item{} = item, params \\ %{}) do
+  def change_item(%Item{} = item, %{} = params \\ %{}) do
     Item.changeset(item, params)
   end
 
