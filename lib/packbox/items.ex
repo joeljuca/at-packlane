@@ -33,8 +33,8 @@ defmodule Packbox.Items do
   @doc """
   Return an `%Ecto.Changeset{}` for tracking item changes.
   """
-  def change_item(%Item{} = item) do
-    Item.changeset(item, %{})
+  def change_item(%Item{} = item, params \\ %{}) do
+    Item.changeset(item, params)
   end
 
   @caliper_thickness_mailer 1 / 8
